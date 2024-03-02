@@ -30,12 +30,18 @@ public class Word {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @EqualsAndHashCode.Include
     private Long id;
+
     private String word;
+
     private String pos;
+
     private String pronunciation;
+
     private String definition;
+
     @OneToMany(mappedBy = "word", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Example> examples;
+
     @ManyToOne
     @JoinColumn(name = "notebook_id")
     private Notebook notebook;

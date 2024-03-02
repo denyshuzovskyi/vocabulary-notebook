@@ -26,7 +26,7 @@ public class NotebookController {
         return notebookService.getNotebooks();
     }
 
-    @PostMapping()
+    @PostMapping
     public NotebookViewDTO addNotebook(@RequestBody NotebookCreationDTO notebook) {
         return notebookService.addNotebook(notebook);
     }

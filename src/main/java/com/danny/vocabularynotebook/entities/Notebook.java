@@ -27,8 +27,11 @@ public class Notebook {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @EqualsAndHashCode.Include
     private Long id;
+
     private String name;
+
     private String description;
+
     @OneToMany(mappedBy = "notebook", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Word> words;
 }

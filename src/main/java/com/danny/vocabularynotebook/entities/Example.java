@@ -25,6 +25,7 @@ public class Example {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @EqualsAndHashCode.Include
     private Long id;
+
     private String exampleText;
 
     @ManyToOne

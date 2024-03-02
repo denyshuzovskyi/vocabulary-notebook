@@ -26,9 +26,12 @@ public class TestOption {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @EqualsAndHashCode.Include
     private Long id;
+
     private String option;
+
     @Column(name = "is_correct")
     private Boolean isCorrect;
+
     @ManyToOne
     @JoinColumn(name = "test_id")
     private Test test;

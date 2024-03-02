@@ -9,7 +9,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -20,46 +19,39 @@ import lombok.ToString;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
-@Table(name = "tests")
+@Table(name = "test_sessions")
 @NoArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString
-public class Test {
+public class TestSession {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @EqualsAndHashCode.Include
     private Long id;
 
-    private String task;
-
-    @ManyToOne
-    @JoinColumn(name = "word_id")
-    private Word word;
-
-    @OneToMany(mappedBy = "test", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TestOption> testOptions;
-
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
-
     @ManyToOne
     @JoinColumn(name = "test_collection_id")
     private TestCollection testCollection;
 
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-    }
+    @OneToMany(mappedBy = "testSession", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TestResult> testResults;
 
-    public void addTestOption(TestOption testOption) {
-        if (testOptions == null) {
-            testOptions = new ArrayList<>();
+    @Column(name = "started_at")
+    private LocalDateTime startedAt;
+
+    @Column(name = "finished_at")
+    private LocalDateTime finishedAt;
+
+    public void addTestResult(TestResult testResult) {
+        if (Objects.isNull(testResults)) {
+            testResults = new ArrayList<>();
         }
-        testOption.setTest(this);
-        testOptions.add(testOption);
+        testResult.setTestSession(this);
+        testResults.add(testResult);
     }
 }

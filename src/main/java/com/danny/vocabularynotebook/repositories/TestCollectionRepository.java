@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface TestCollectionRepository extends JpaRepository<TestCollection, Long> {
-    @Query("SELECT tc FROM TestCollection tc WHERE tc.notebook.id = :notebookId ORDER BY tc.createdAt DESC")
+    @Query("SELECT tc FROM TestCollection tc WHERE tc.notebook.id = :notebookId ORDER BY tc.createdAt DESC LIMIT 1")
     Optional<TestCollection> findLatestByNotebookId(@Param("notebookId") Long notebookId);
 
     @Query("SELECT COUNT(tc) > 0 FROM TestCollection tc WHERE tc.notebook.id = :notebookId")

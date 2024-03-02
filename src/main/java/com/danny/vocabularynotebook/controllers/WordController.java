@@ -29,7 +29,7 @@ public class WordController {
     }
 
 
-    @PostMapping()
+    @PostMapping
     public WordViewDTO addWord(@RequestBody WordCreationDTO word) {
         return service.addWord(word);
     }
