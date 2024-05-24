@@ -23,7 +23,7 @@ public class TestSessionController {
         return testSessionService.startTestSessionForTestCollection(id);
     }
 
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "/{id}/final-result")
     public TestSessionFinalResultDTO finishSessionAndGetFinalResult(@PathVariable Long id) {
         return testSessionService.finishSessionAndGetFinalResult(id);
     }

@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -24,7 +25,8 @@ import java.util.List;
 @ToString
 public class Notebook {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "notebook_seq_generator")
+    @SequenceGenerator(name = "notebook_seq_generator", sequenceName = "notebooks_id_seq", allocationSize = 1)
     @EqualsAndHashCode.Include
     private Long id;
 

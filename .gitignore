@@ -39,8 +39,6 @@ out/
 docker/
 gradle/
 postgres_db/
-src/main/resources/db/migration/
-src/test/java/
 docker-compose.yml
 gradlew
 gradlew.bat

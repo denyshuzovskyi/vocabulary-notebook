@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -22,7 +23,8 @@ import lombok.ToString;
 @ToString
 public class SelectedTestOption {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "selected_test_option_seq_generator")
+    @SequenceGenerator(name = "selected_test_option_seq_generator", sequenceName = "selected_test_options_id_seq", allocationSize = 1)
     @EqualsAndHashCode.Include
     private Long id;
 
