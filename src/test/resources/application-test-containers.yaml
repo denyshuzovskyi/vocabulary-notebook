@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:tc:postgresql:16-alpine:///vocabulary-notebook
+    username: test
+    password: test
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+logging:
+  level:
+    org:
+      springframework:
+        test:
+          context:
+            jdbc: debug
+        jdbc:
+          datasource:
+            init: debug

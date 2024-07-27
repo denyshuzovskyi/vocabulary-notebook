@@ -1,5 +1,12 @@
+CREATE SEQUENCE notebooks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 CREATE TABLE notebooks (
-    id BIGSERIAL,
+    id BIGINT DEFAULT nextval('notebooks_id_seq') NOT NULL,
     name VARCHAR(255),
     description VARCHAR(255)
 );
@@ -9,8 +16,15 @@ ALTER TABLE notebooks
 -----------------------------------------------------
 
 
+CREATE SEQUENCE words_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 CREATE TABLE words (
-    id BIGSERIAL,
+    id BIGINT DEFAULT nextval('words_id_seq') NOT NULL,
     word VARCHAR(255),
     pos VARCHAR(20),
     pronunciation VARCHAR(255),
@@ -26,8 +40,15 @@ ALTER TABLE words
 -----------------------------------------------------
 
 
+CREATE SEQUENCE examples_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 CREATE TABLE examples (
-    id BIGSERIAL,
+    id BIGINT DEFAULT nextval('examples_id_seq') NOT NULL,
     example_text VARCHAR(255),
     word_id BIGINT
 );
@@ -40,8 +61,15 @@ ALTER TABLE examples
 -----------------------------------------------------
 
 
+CREATE SEQUENCE test_collections_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 CREATE TABLE test_collections (
-    id BIGSERIAL,
+    id BIGINT DEFAULT nextval('test_collections_id_seq') NOT NULL,
     notebook_id BIGINT,
     created_at TIMESTAMP(6) WITHOUT TIME ZONE
 );
@@ -54,8 +82,15 @@ ALTER TABLE test_collections
 -----------------------------------------------------
 
 
+CREATE SEQUENCE test_collection_generation_jobs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 CREATE TABLE test_collection_generation_jobs (
-    id BIGSERIAL,
+    id BIGINT DEFAULT nextval('test_collection_generation_jobs_id_seq') NOT NULL,
     status VARCHAR(255),
     test_collection_id BIGINT
 );
@@ -69,8 +104,15 @@ ALTER TABLE test_collection_generation_jobs
 -----------------------------------------------------
 
 
+CREATE SEQUENCE tests_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 CREATE TABLE tests (
-    id BIGSERIAL,
+    id BIGINT DEFAULT nextval('tests_id_seq') NOT NULL,
     task VARCHAR(255),
     word_id BIGINT,
     test_collection_id BIGINT,
@@ -87,8 +129,15 @@ ALTER TABLE tests
 -----------------------------------------------------
 
 
+CREATE SEQUENCE test_options_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 CREATE TABLE test_options (
-    id BIGSERIAL,
+    id BIGINT DEFAULT nextval('test_options_id_seq') NOT NULL,
     option VARCHAR(255),
     is_correct BOOLEAN,
     test_id BIGINT
@@ -102,8 +151,15 @@ ALTER TABLE test_options
 -----------------------------------------------------
 
 
+CREATE SEQUENCE test_sessions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 CREATE TABLE test_sessions (
-    id BIGSERIAL,
+    id BIGINT DEFAULT nextval('test_sessions_id_seq') NOT NULL,
     test_collection_id BIGINT,
     started_at TIMESTAMP(6) WITHOUT TIME ZONE,
     finished_at TIMESTAMP(6) WITHOUT TIME ZONE
@@ -117,8 +173,15 @@ ALTER TABLE test_sessions
 -----------------------------------------------------
 
 
+CREATE SEQUENCE test_results_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 CREATE TABLE test_results (
-    id BIGSERIAL,
+    id BIGINT DEFAULT nextval('test_results_id_seq') NOT NULL,
     test_session_id BIGINT,
     test_id BIGINT
 );
@@ -133,8 +196,15 @@ ALTER TABLE test_results
 -----------------------------------------------------
 
 
+CREATE SEQUENCE selected_test_options_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
 CREATE TABLE selected_test_options (
-    id BIGSERIAL,
+    id BIGINT DEFAULT nextval('selected_test_options_id_seq') NOT NULL,
     test_option_id BIGINT,
     test_result_id BIGINT
 );

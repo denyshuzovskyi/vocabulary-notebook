@@ -1,0 +1,5 @@
+DELETE FROM words;
+DELETE FROM notebooks;
+
+ALTER SEQUENCE words_id_seq RESTART WITH 1;
+ALTER SEQUENCE notebooks_id_seq RESTART WITH 1;
